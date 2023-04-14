@@ -13,10 +13,7 @@ from torcheval.metrics import MeanSquaredError
 from tqdm import tqdm
 
 os.environ['DGLBACKEND'] = 'pytorch'
-if torch.cuda.device_count() > 0:
-    device = torch.device("cuda")
-else:
-    device = torch.device("cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class GCN(nn.Module):
